@@ -1,11 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import classes from './CustomButton.module.css';  // Import the CSS module
+import classes from './CustomCartButton.module.css';  // Import the CSS module
 
-const CustomButton = () => {
+const CustomCartButton = (props) => {
     return (
         <div>
             <Button 
+                onClick={props.onShowModal}
                 variant="light" 
                 className={classes.neonBlueBorder}  // Apply custom class with Bootstrap
             >
@@ -15,4 +16,4 @@ const CustomButton = () => {
     );
 };
 
-export default CustomButton;
+export default CustomCartButton;

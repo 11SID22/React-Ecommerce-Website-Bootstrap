@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";  // Make sure to import Nav
-import CustomButton from '../UI/CustomButton';
+import CustomCartButton from './CustomCartButton';
 
-const CustomNavbar = () => {
+const CustomNavbar = (props) => {
     return (
         <div>
             <Navbar bg="dark" variant="dark">
@@ -13,7 +13,7 @@ const CustomNavbar = () => {
                         <Nav.Link href="#about" style={{ color: 'white' }}>ABOUT</Nav.Link>
                     </Nav>
                 </Container>
-                <CustomButton className="mt-2" />
+                <CustomCartButton onShowModal={props.onShowModal} className="mt-2" />
 
             </Navbar>
         </div>
