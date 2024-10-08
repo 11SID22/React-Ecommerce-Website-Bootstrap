@@ -4,6 +4,7 @@ import CustomNavbar from './components/Layout/CustomNavbar'
 import CustomHeader from './components/Layout/CustomHeader';
 import CustomAlbum from './components/Albums/CustomAlbum';
 import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -16,12 +17,12 @@ function App() {
   }
 
   return (
-    <div>
+    <CartProvider>
       <CustomNavbar onShowModal={modalShowHandler}/>
       <CustomHeader />
       {showModal && <Cart onClose={modalCloseHandler}/>}
       <CustomAlbum />
-    </div>
+    </CartProvider>
   );
 }
 

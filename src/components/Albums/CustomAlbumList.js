@@ -1,7 +1,21 @@
-import React from "react";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import CartContext from "../../store/cart-context";
 
 const CustomAlbumList = (props) => {
+    const cartCtx = useContext(CartContext);
+
+    const addItemToCart = () => {
+
+        cartCtx.addItem({
+            id: props.id,
+            imageUrl: props.imageUrl,
+            title: props.title,
+            price: props.price,
+            quantity: 1
+        })
+        console.log('after addItemToCart', cartCtx);
+    };
     return (
         <Container>
             <Row className="justify-content-center mb-2">
@@ -23,6 +37,15 @@ const CustomAlbumList = (props) => {
                             <Card.Text>Price: ${props.price}</Card.Text>
                         </Card.Body>
                     </Card>
+                </Col>
+            </Row>
+            <Row className="justify-content-center mt-1 mb-5" >
+                <Col xs="auto">
+                    <Button
+                        variant="info"
+                        onClick={addItemToCart}
+                    >
+                        Add to Cart</Button>
                 </Col>
             </Row>
         </Container>
