@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";  // Make sure to import Nav
+import { Container, Navbar, Nav } from "react-bootstrap";
 import CustomCartButton from './CustomCartButton';
+import { NavLink } from "react-router-dom";
 
 const CustomNavbar = (props) => {
     return (
@@ -8,13 +9,16 @@ const CustomNavbar = (props) => {
             <Navbar bg="dark" variant="dark">
                 <Container className="justify-content-center">
                     <Nav className="d-flex" style={{ gap: '70px' }}>  {/* Flexbox with reduced gap */}
-                        <Nav.Link href="#home" style={{ color: 'white' }}>HOME</Nav.Link>
-                        <Nav.Link href="#store" style={{ color: 'white' }}>STORE</Nav.Link>
-                        <Nav.Link href="#about" style={{ color: 'white' }}>ABOUT</Nav.Link>
+                        <NavLink to="/home" style={{ color: 'white', textDecoration: 'none' }}>HOME</NavLink>
+                        <NavLink to="/" style={{ color: 'white', textDecoration: 'none' }}>STORE</NavLink>
+                        <NavLink to="/about" style={{ color: 'white', textDecoration: 'none' }}>ABOUT</NavLink>
                     </Nav>
                 </Container>
-                <CustomCartButton onShowModal={props.onShowModal} className="mt-2" />
-
+                {/* Conditionally render the cart button based on current path */}
+                {/* Add a check for the Home page */}
+                {props.currentPath !== '/about' && props.currentPath !== '/home' && (
+                    <CustomCartButton onShowModal={props.onShowModal} className="mt-2" />
+                )}
             </Navbar>
         </div>
     );

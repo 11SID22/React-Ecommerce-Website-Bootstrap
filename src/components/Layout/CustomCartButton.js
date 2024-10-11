@@ -15,6 +15,7 @@ const CustomCartButton = (props) => {
             <Button
                 onClick={props.onShowModal}
                 variant="light"
+                size="sm"
                 className={classes.neonBlueBorder}  // Apply custom class with Bootstrap
             >
                 Cart
